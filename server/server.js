@@ -23,6 +23,11 @@ const compiler = webpack(webpackConfig)
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
 app.use(webpackHotMiddleware(compiler))
 
+// Add demo "count" API to the Express app
+// (For a real app, run API's as a separate server.)
+import addCountApi from './count-api';
+addCountApi(app);
+
 // Create the renderer.
 var render4r = createRender4r({
   routes:       routes,
