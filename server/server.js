@@ -11,10 +11,6 @@ import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpackConfig from '../webpack.config'
 
-import React from 'react'
-import { renderToString } from 'react-dom/server'
-import { Provider } from 'react-redux'
-
 import configureStore from '../common/store/configure-store'
 import routes from '../common/routes'
 import { fetchCounter } from '../common/api/counter'
