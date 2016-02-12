@@ -8,6 +8,7 @@
   ],
   "website": "https://github.com/heroku/create-render-4r-example",
   "repository": "https://github.com/heroku/create-render-4r-example.git",
+  "logo": "http://universal-web-apps.s3.amazonaws.com/universal-front-end-icon.svg",
   "success_url": "/",
   "env": {
     "NODE_ENV": {
