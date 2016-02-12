@@ -6,7 +6,9 @@
     "node": "5.5.x"
   },
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config=webpack.config.production.js",
+    "postinstall": "if [ \"$NODE_ENV\" = production ] ; then npm run build ; fi"
   },
   "repository": {
     "type": "git",

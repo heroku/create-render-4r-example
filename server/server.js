@@ -6,6 +6,7 @@ import path from 'path'
 import Express from 'express'
 import qs from 'qs'
 
+// These are only used in `NODE_ENV=development`
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
@@ -17,11 +18,17 @@ import { fetchCounter } from '../common/api/counter'
 
 const app = new Express()
 const port = process.env.PORT || 3000;
+const nodeEnv = process.env.NODE_ENV || 'development';
 
-// Use this middleware to set up hot module reloading via webpack.
-const compiler = webpack(webpackConfig)
-app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
-app.use(webpackHotMiddleware(compiler))
+if (nodeEnv === 'development') {
+  // Use this middleware to set up hot module reloading via webpack.
+  const compiler = webpack(webpackConfig)
+  app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
+  app.use(webpackHotMiddleware(compiler))
+} else {
+  // Serve pre-built bundle
+  app.use(Express.static('public'));
+}
 
 // Add demo "count" API to the Express app
 // (For a real app, run API's as a separate server.)
@@ -50,7 +57,7 @@ function renderFullPage(componentHTML, cleanInitialState, documentMeta) {
         <script>
           window.__INITIAL_STATE__ = ${cleanInitialState};
         </script>
-        <script src="/static/bundle.js"></script>
+        <script src="/bundle.js"></script>
       </body>
     </html>
     `

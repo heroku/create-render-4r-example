@@ -9,6 +9,12 @@
   "website": "https://github.com/heroku/create-render-4r-example",
   "repository": "https://github.com/heroku/create-render-4r-example.git",
   "success_url": "/",
+  "env": {
+    "NODE_ENV": {
+      "description": "The runtime environment name. Only change this if you code specific functionality for another value.",
+      "value": "production"
+    }
+  },
   "addons": [
     "heroku-redis"
   ]
