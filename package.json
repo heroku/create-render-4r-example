@@ -19,6 +19,7 @@
     "create-render-4r": "^0.1.0",
     "express": "^4.13.3",
     "history": "^1.13.0",
+    "isomorphic-fetch": "^2.2.1",
     "qs": "^4.0.0",
     "radium": "^0.15.3",
     "react": "^0.14.6",
