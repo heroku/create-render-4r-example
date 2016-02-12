@@ -19,7 +19,7 @@
   "homepage": "https://github.com/heroku/create-render-4r",
   "dependencies": {
     "babel": "^5.8.21",
-    "create-render-4r": "^0.1.0",
+    "create-render-4r": "github:heroku/create-render-4r",
     "express": "^4.13.3",
     "history": "^1.13.0",
     "isomorphic-fetch": "^2.2.1",
