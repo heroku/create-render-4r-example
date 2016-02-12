@@ -2,6 +2,7 @@ Example Universal Web App
 =========================
 Renders through the [`create-render-4r` server module](https://github.com/heroku/create-render-4r).
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/heroku/create-render-4r-example)
 
 Usage
 -----

@@ -1,0 +1,15 @@
+{
+  "name": "Example Universal Web App",
+  "description": "Reference architecture using create-render-4r",
+  "keywords": [
+    "universal",
+    "javascript",
+    "react"
+  ],
+  "website": "https://github.com/heroku/create-render-4r-example",
+  "repository": "https://github.com/heroku/create-render-4r-example.git",
+  "success_url": "/",
+  "addons": [
+    "heroku-redis"
+  ]
+}
