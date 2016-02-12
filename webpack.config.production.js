@@ -13,7 +13,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   resolve: {
-    modulesDirectories: ['node_modules', 'shared'],
+    modulesDirectories: ['node_modules', 'common'],
     extensions:         ['', '.js', '.jsx']
   },
   plugins: [

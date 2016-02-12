@@ -5,11 +5,16 @@ module.exports = {
   devtool: 'inline-source-map',
   entry: [
     'webpack-hot-middleware/client',
+    'babel/polyfill',
     './client/index.js'
   ],
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
+  },
+  resolve: {
+    modulesDirectories: ['node_modules', 'common'],
+    extensions:         ['', '.js', '.jsx']
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
