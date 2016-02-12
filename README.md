@@ -10,7 +10,7 @@ Usage
 ```bash
 git clone https://github.com/heroku/create-render-4r-example.git
 
-cd create-render-4r/example
+cd create-render-4r-example
 npm install
 npm start
 
