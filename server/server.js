@@ -52,7 +52,7 @@ function renderFullPage(componentHTML, cleanInitialState, documentMeta) {
         ${documentMeta}
       </head>
       <body>
-        <div id="app">${componentHTML}</div>
+        <div id="react-app">${componentHTML}</div>
         <script>
           window.__INITIAL_STATE__ = ${cleanInitialState};
         </script>

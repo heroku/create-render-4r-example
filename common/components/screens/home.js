@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import Radium from 'radium';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Counter from '../counter'
@@ -22,9 +23,17 @@ class Home extends Component {
 
   render() {
     return (
-        <Counter {...this.props} />
+      <Counter style={styles.flexItem} {...this.props} />
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+const styles = {
+  flexItem: {
+    flex: '1 1 0',
+    width: '12rem',
+    textAlign: 'center'
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Radium(Home))

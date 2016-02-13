@@ -18,7 +18,9 @@ class AppView extends React.Component {
         <DocumentMeta {...metaData}/>
         <Style rules={globalStyles} />
 
-        {this.props.children}
+        <div style={styles.flexContainer}>
+          {this.props.children}
+        </div>
       </div>
     );
   }
@@ -29,6 +31,15 @@ const styles = {
   base: {
     width: '100%',
     height: '100%'
+  },
+  flexContainer: {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexWrap: 'no-wrap'
   }
 }
 

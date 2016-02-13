@@ -12,7 +12,7 @@ import routes from '../common/routes'
 const initialState = window.__INITIAL_STATE__
 const store = configureStore(initialState)
 const history = useQueries(createHistory)()
-const rootElement = document.getElementById('app')
+const rootElement = document.getElementById('react-app')
 
 render(
   <Provider store={store}>

@@ -15,7 +15,11 @@ export function get() {
     const proto = state.sourceRequest.protocol;
     const host = state.sourceRequest.host;
 
-    return fetch(`${proto}://${host}/api/count`)
+    return fetch(`${proto}://${host}/api/count`, {
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
       .then(response => detectStatus(response))
       .then(json => dispatch(set(parseInt(json.value, 10))))
       .catch(error => {
@@ -31,7 +35,10 @@ export function increment() {
     const host = state.sourceRequest.host;
 
     return fetch(`${proto}://${host}/api/count/increment`, {
-        method: 'post'
+        method: 'post',
+        headers: {
+          'Accept': 'application/json'
+        }
       })
       .then(response => detectStatus(response))
       .then(json => dispatch(set(parseInt(json.value, 10))))
@@ -48,7 +55,10 @@ export function decrement() {
     const host = state.sourceRequest.host;
 
     return fetch(`${proto}://${host}/api/count/decrement`, {
-        method: 'post'
+        method: 'post',
+        headers: {
+          'Accept': 'application/json'
+        }
       })
       .then(response => detectStatus(response))
       .then(json => dispatch(set(parseInt(json.value, 10))))

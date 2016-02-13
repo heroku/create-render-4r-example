@@ -19,16 +19,28 @@ export default function(app) {
   app.post(`${COUNT_PATH}/increment`, function(req, res, next) {
     redis.incr(COUNT_KEY, function(err, reply) {
       if (err != null) { next(err); }
-      res.json({ value: reply });
+      if (wantsJson(req.headers['accept'])) {
+        res.json({ value: reply });
+      } else {
+        res.redirect('/');
+      }
     });
   });
 
   app.post(`${COUNT_PATH}/decrement`, function(req, res, next) {
     redis.decr(COUNT_KEY, function(err, reply) {
       if (err != null) { next(err); }
-      res.json({ value: reply });
+      if (wantsJson(req.headers['accept'])) {
+        res.json({ value: reply });
+      } else {
+        res.redirect('/');
+      }
     });
   });
 
   return app;
+}
+
+function wantsJson(acceptHeader) {
+  return acceptHeader != null && acceptHeader.indexOf('application/json') >= 0;
 }
