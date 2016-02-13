@@ -14,7 +14,6 @@ import webpackConfig from '../webpack.config'
 
 import configureStore from '../common/store/configure-store'
 import routes from '../common/routes'
-import { fetchCounter } from '../common/api/counter'
 
 const app = new Express()
 const port = process.env.PORT || 3000;
