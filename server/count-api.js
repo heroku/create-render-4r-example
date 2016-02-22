@@ -1,14 +1,20 @@
 import Redis from 'redis';
 
-// `REDIS_URL` is a Heroku-style database URL.
-// If nil, will connect to default localhost:6379
-const redis = createRedisClient();
-
 const COUNT_KEY = 'count';
 const COUNT_PATH = '/api/count';
 const COUNT_CHANNEL = `${COUNT_KEY}-values`
 
 export default function(app) {
+
+  // `REDIS_URL` is a Heroku-style database URL.
+  // If nil, will connect to default localhost:6379
+  const redis = createRedisClient();
+  const redisListen = createRedisClient();
+  // Global subscription for server sent events
+  redisListen.subscribe(COUNT_CHANNEL);
+  redisListen.on("error", function(err) {
+    console.error(`Redis Error: ${err}`);
+  });
 
   app.get(COUNT_PATH, function(req, res, next) {
     redis.get(COUNT_KEY, function(err, reply) {
@@ -24,31 +30,15 @@ export default function(app) {
         });
         res.write('\n');
 
-        // Create individual subscription to count values
-        const requestRedis = createRedisClient();
-        requestRedis.subscribe(COUNT_CHANNEL);
-
         // Send an SSE message for each value change
         let messageId = 0;
-        requestRedis.on("message", function(channel, message) {
+        redisListen.on("message", function(channel, message) {
           if (channel === COUNT_CHANNEL) {
             messageId++;
             res.write(`id: ${messageId}\n`);
             res.write(`data: ${message}\n\n`);
           }
         });
-
-        // Log errors.
-        requestRedis.on("error", function(err) {
-          console.error(`Subscriber Redis Error: ${err}`);
-        });
-
-        // Clean-up when browser disconnects.
-        req.on("close", function() {
-          requestRedis.unsubscribe(COUNT_CHANNEL);
-          requestRedis.quit();
-        });
-
       } else {
         // Send a normal JSON response
         res.json({ value: value });
