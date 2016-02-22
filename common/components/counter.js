@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import Radium from 'radium';
 import DocumentMeta from 'react-document-meta';
+import * as CounterActions from '../actions/counter'
 
 class Counter extends Component {
 
@@ -52,21 +53,17 @@ class Counter extends Component {
   }
 
   incrementWithFormFallback(e) {
-    const { increment } = this.props;
     e.preventDefault();
-    increment();
+    this.props.dispatch(CounterActions.increment());
   }
 
   decrementWithFormFallback(e) {
-    const { decrement } = this.props;
     e.preventDefault();
-    decrement();
+    this.props.dispatch(CounterActions.decrement());
   }
 }
 
 Counter.propTypes = {
-  increment: PropTypes.func.isRequired,
-  decrement: PropTypes.func.isRequired,
   counter: PropTypes.number.isRequired
 }
 
