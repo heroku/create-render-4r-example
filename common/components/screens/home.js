@@ -1,24 +1,27 @@
 import React, { Component, PropTypes } from 'react'
 import Radium from 'radium';
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Counter from '../counter'
 import * as CounterActions from '../../actions/counter'
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter
+    counter: state.counter.get('value')
   }
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch)
 }
 
 class Home extends Component {
 
   static fetchData(dispatch, props) {
     return dispatch(CounterActions.get());
+  }
+
+  componentDidMount() {
+    this.props.dispatch(CounterActions.subscribe());
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(CounterActions.unsubscribe());
   }
 
   render() {
@@ -36,4 +39,4 @@ const styles = {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Radium(Home))
+export default connect(mapStateToProps)(Radium(Home))
