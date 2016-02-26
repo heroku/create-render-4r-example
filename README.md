@@ -16,6 +16,10 @@ CLI:
 heroku restart -a my-app
 ```
 
+Demo
+----
+[universal-example.herokuapp.com](https://universal-example.herokuapp.com)
+
 Usage
 -----
 
