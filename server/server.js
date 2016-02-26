@@ -37,7 +37,7 @@ addCountApi(app);
 // Create the renderer.
 var render4r = createRender4r({
   routes:       routes,
-  createStore:  configureStore,
+  loadStore:    configureStore,
   layoutHtml:   renderFullPage
 });
 
