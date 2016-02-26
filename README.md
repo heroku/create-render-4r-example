@@ -7,6 +7,11 @@ Renders through the [`create-render-4r` server module](https://github.com/heroku
 ### After initial Deploy
 You may see an **Application error**, because Redis was not provisioned quickly enough. To fix, restart the app:
 
+[Dashboard](https://dashboard.heroku.com):
+
+![Restart in Heroku app menu](http://universal-web-apps.s3.amazonaws.com/restart-app.png)
+
+CLI:
 ```
 heroku restart -a my-app
 ```
