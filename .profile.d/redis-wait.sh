@@ -7,6 +7,6 @@ set -o pipefail
 # Fail on undeclared variables.
 set -u
 
-BIN_DIR=$(cd "$(dirname "$0")"; pwd)
+SRC_DIR=$(pwd)
 
-eval $BIN_DIR/redis-wait
+eval $SRC_DIR/.profile.d/redis-wait
