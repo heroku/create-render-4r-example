@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+var Redis = require('redis')
+
+function redisWait() {
+  var client = Redis.createClient({
+    max_attempts: 0, // keep trying to connect
+    retry_max_delay: 5000, // ramp up to every five seconds
+    url: process.env.REDIS_URL
+  })
+  client.on('error', function(err) {
+    process.stdout.write('.')
+  })
+  client.on('ready', function() {
+    process.stdout.write(' Ready!\n')
+    process.exit()
+  })
+}
+
+process.stdout.write('Checking for Redis.')
+redisWait()
