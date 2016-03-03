@@ -1,6 +1,8 @@
 Example Universal Web App
 =========================
-Renders through the [`create-render-4r` server module](https://github.com/heroku/create-render-4r).
+A React.js app that runs on the server and in browsers.
+
+Uses [`create-render-4r` Express.js middleware](https://github.com/heroku/create-render-4r) for server-side rendering.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/heroku/create-render-4r-example)
 
