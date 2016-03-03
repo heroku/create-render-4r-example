@@ -12,6 +12,10 @@ Demo
 
 Usage
 -----
+Requires [Redis](http://redis.io):
+
+  * Connection defaults to `localhost:6379` (should "just work" for local installs)
+  * Configure via env variable `REDIS_URL=redis://username:password@example.com:6379`.
 
 ```bash
 git clone https://github.com/heroku/create-render-4r-example.git
