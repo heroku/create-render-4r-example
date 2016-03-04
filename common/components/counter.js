@@ -14,7 +14,7 @@ class Counter extends Component {
   render() {
     const { counter } = this.props;
     const metaData = {
-      title: `Universal App: Counter #${counter}`
+      title: `#${counter}`
     };
 
     return (
