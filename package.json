@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "An example of a universal web app",
   "engines": {
-    "node": "5.5.x"
+    "node": "6.11.x"
   },
   "scripts": {
     "start": "node server/index.js",
